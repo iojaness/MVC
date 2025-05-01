@@ -23,6 +23,7 @@ MVC/
 ├── react-app/              # Código fuente de React (sin crear app dos veces)
 │   ├── src/
 │   └── public/
+├── SQL                     # Scripts SQL
 ├── .gitignore
 ├── README.md
 └── package.json            # Principal
