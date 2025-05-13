@@ -2,6 +2,7 @@
 require('dotenv').config();
 const mysql  = require('mysql2/promise');
 const bcrypt = require('bcrypt');
+const db = await require('./db')
 
 (async () => {
   // 1. Conecta usando el .env
