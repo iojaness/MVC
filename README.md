@@ -27,3 +27,8 @@ MVC/
 ├── .gitignore
 ├── README.md
 └── package.json            # Principal
+
+Para ejecutar la base de datos se tiene que subir el archivo patrones.sql a MySQL, es imporante ya que contene:
+- Tablas
+- Procedimientos almacenados
+- Datos de prueba para evaluar las rutas ya definidas
