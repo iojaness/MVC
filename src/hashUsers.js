@@ -1,19 +1,14 @@
 // hashUsers.js
 require('dotenv').config();
-const mysql  = require('mysql2/promise');
 const bcrypt = require('bcrypt');
+const getConection = require('./db');
 
 (async () => {
   // 1. Conecta usando el .env
-  const db = await mysql.createConnection({
-    host:     process.env.DB_HOST,
-    user:     process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  });
+  const db = await getConection();
 
   // 2. Trae todos los usuarios
-  const [rows] = await db.execute('SELECT id, password FROM usuarios');
+  const [rows] = await db.execute('SELECT id, password FROM user');
   for (const { id, password: plain } of rows) {
     // 3. Si ya está hasheada (bcrypt hashes empiezan con $2), la saltamos
     if (plain.startsWith('$2')) continue;
@@ -21,7 +16,7 @@ const bcrypt = require('bcrypt');
     // 4. Si está en texto plano, generamos el hash y actualizamos
     const hash = await bcrypt.hash(plain, 10);
     await db.execute(
-      'UPDATE usuarios SET password = ? WHERE id = ?',
+      'UPDATE user SET password = ? WHERE id = ?',
       [hash, id]
     );
     console.log(`🔒 Usuario ${id} encriptado.`);
