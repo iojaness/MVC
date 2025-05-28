@@ -271,10 +271,10 @@
               {trayectos.map((t) => (
                 <tr key={t.id} className="border-t">
                   <td className="px-4 py-2">{t.date}</td>
-                  <td className="px-4 py-2">{t.user_name}</td>
-                  <td className="px-4 py-2">{t.boss_name}</td>
-                  <td className="px-4 py-2">{t.origin_name}</td>
-                  <td className="px-4 py-2">{t.arrival_name}</td>
+                  <td className="px-4 py-2">{t.user}</td>
+                  <td className="px-4 py-2">{t.user_boss}</td>
+                  <td className="px-4 py-2">{t.origin_place}</td>
+                  <td className="px-4 py-2">{t.arrival_place}</td>
                   <td className="px-4 py-2">{t.date_service}</td>
                   <td className="px-4 py-2">{t.time_service}</td>
                   <td className="px-4 py-2">
