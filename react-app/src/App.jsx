@@ -7,10 +7,14 @@ import Navbar from './components/Navbar.jsx';
 
 // Páginas
 import Home from './pages/Home.jsx';
-import Proyectos from './pages/Proyectos.jsx';
-import Documentacion from './pages/Documentacion.jsx';
-import Scrum from './pages/Scrum.jsx';
-import Horas from './pages/Horas.jsx';
+import TrayectosEspeciales from './pages/TrayectosEspeciales.jsx';
+
+// ...
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/trayectos-especiales" element={<TrayectosEspeciales />} />
+</Routes>
+
 
 function App() {
   const [user, setUser]           = useState('');
@@ -63,10 +67,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/proyectos" element={<Proyectos />} />
-            <Route path="/documentacion" element={<Documentacion />} />
-            <Route path="/scrum" element={<Scrum />} />
-            <Route path="/horas" element={<Horas />} />
+            <Route path="/trayectos-especiales" element={<TrayectosEspeciales />} />
           </Routes>
         </Router>
       )}

@@ -7,6 +7,10 @@
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
+CREATE DATABASE IF NOT EXISTS patrones;
+USE patrones;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -26,7 +30,8 @@ DELIMITER $$
 -- Procedimientos
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_travels` ()   SELECT 
-	journey.description, 
+	journey.id,
+    journey.description, 
     journey.date, 
     user_sol.email AS 'user',
     boss.email AS 'user_boss',
@@ -281,18 +286,22 @@ CREATE TABLE `user` (
 -- Volcado de datos para la tabla `user`
 --
 
+UPDATE `user`
+SET `password` = '12345678'
+WHERE id > 0;
+
 INSERT INTO `user` (`id`, `username`, `name`, `last_name`, `email`, `password`, `type`) VALUES
-(1, 'sergio_parra', 'Sergio', 'Parra', 'stevenparracuesta@gmail.com', '$2b$10$jCTw2Snaaea1kZkMts7Ku.FaezIsbBk7WKotjjgo1poIZf13rWNti', 'Jefe'),
-(2, 'johan_rojas', 'Johan', 'Rojas', 'johan_rojas@gmail.com', '$2b$10$NEmhAp1h6W5.iono9eaQteNWnf/X60LP9AyeonWVjsnLcKCZx0Jg6', 'Jefe'),
-(3, 'tatiana_criado', 'Tatiana', 'Criado', 'tatiana.criado@gmail.com', '$2b$10$ZGeoLeXTXfqE5Ae8J28CA.qB1p80M8BA/Q9WbEB1DC4Y6tRrQuztK', 'Empleado'),
-(4, 'steven_cuesta', 'Steven', 'Cuesta', 'steven-cuesta@hotmail.com', '$2b$10$qukX7utR8lzc8dtFo18eX.k7kpXQvk2SdbEChhwRW/OzJ2SnZoPCW', 'Empleado'),
-(5, 'erick_ruales', 'Erick', 'Ruales', 'erick.ruales@hotmail.com', '$2b$10$royNNi5ZiAk4B5ETIULPP.HPlG5GE6PplRBzA.yeJqS6hdeolNzsa', 'Empleado'),
-(6, 'hayder_pava', 'Hayber', 'Pava', 'hayver.pava56@gmail.com', '$2b$10$LiK3TtrqmCzTeKnbejgXze6GgymY03PFfsY0wVXOTYlTZCZnY1rFW', 'Empleado'),
-(7, 'fer_fonseca', 'Fernando', 'Fonseca', 'fer.fonseca78@gmail.com', '$2b$10$5zL/ozy.rgtNgKZZlV/1M.VcnsPAgVAGsLpOZ6Df8E6byAmlCLFBS', 'Empleado'),
-(8, 'erick_alvarez', 'Erick', 'Alvarez', 'erick.alvarez45@gmail.com', '$2b$10$uW0BHKb3ss00lX8Rr4G/0uk4CiogH5HkBFDLJjmPb6IsXO5RC0vwG', 'Conductor'),
-(9, 'jose_veloza', 'Jose', 'Veloza', 'joseveloza46@gmail.com', '$2b$10$UEyDoDFU.SJhLG4PoYBl1eEQIWo/O/laQ5aQRV9LKxIkBMS0khJhi', 'Conductor'),
-(10, 'maria_mendoza', 'Maria', 'Mendoza', 'maria.mendoza25@gmail.com', '$2b$10$.N99yK1TRwVlWMk8KUuWQ.nIvI7Ldu1bujLDzRyi0EiFbEb2WPZES', 'Conductor'),
-(11, 'ber_martinez', 'Bernardo', 'Martinez', 'bernardo.martinez@gmail.com', '$2b$10$jQtWdAEMwnJvGr1FMkMUNeTGjSUxQrn44Dq2p3f87NAkOMtglXo6e', 'Conductor');
+(1, 'sergio_parra', 'Sergio', 'Parra', 'stevenparracuesta@gmail.com', '12345678', 'Jefe'),
+(2, 'johan_rojas', 'Johan', 'Rojas', 'johan_rojas@gmail.com', '12345678', 'Jefe'),
+(3, 'tatiana_criado', 'Tatiana', 'Criado', 'tatiana.criado@gmail.com', '12345678', 'Empleado'),
+(4, 'steven_cuesta', 'Steven', 'Cuesta', 'steven-cuesta@hotmail.com', '12345678', 'Empleado'),
+(5, 'erick_ruales', 'Erick', 'Ruales', 'erick.ruales@hotmail.com', '12345678', 'Empleado'),
+(6, 'hayder_pava', 'Hayber', 'Pava', 'hayver.pava56@gmail.com', '12345678', 'Empleado'),
+(7, 'fer_fonseca', 'Fernando', 'Fonseca', 'fer.fonseca78@gmail.com', '12345678', 'Empleado'),
+(8, 'erick_alvarez', 'Erick', 'Alvarez', 'erick.alvarez45@gmail.com', '12345678', 'Conductor'),
+(9, 'jose_veloza', 'Jose', 'Veloza', 'joseveloza46@gmail.com', '12345678', 'Conductor'),
+(10, 'maria_mendoza', 'Maria', 'Mendoza', 'maria.mendoza25@gmail.com', '12345678', 'Conductor'),
+(11, 'ber_martinez', 'Bernardo', 'Martinez', 'bernardo.martinez@gmail.com', '12345678', 'Conductor');
 
 --
 -- Índices para tablas volcadas

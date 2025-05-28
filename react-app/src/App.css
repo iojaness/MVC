@@ -6,6 +6,112 @@
   --morado: #48135f;
 }
 
+/* Tabla */
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  white-space: nowrap;
+}
+
+thead th {
+  background-color: --verde3;
+  font-weight: 600;
+}
+
+/* Estados */
+.status-pendiente {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-confirmado {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-otro {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+/* Botones */
+button {
+  transition: all 0.2s ease-in-out;
+  background-color: var(--verde2);
+}
+ul,li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--verde2);
+}
+button:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Scroll personalizado */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Mensajes de error */
+.error-message {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+}
+
 body, html, #root {
   height: 100%;
   margin: 0;
