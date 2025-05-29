@@ -14,4 +14,11 @@ const getAllUsers = async () => {
   return rows;
 };
 
-module.exports = { getPasswordByUsername, getAllUsers };
+const getBoss = async () => {
+  const db = await getConection();
+  // Traer id y username (o name) para el dropdown de usuarios
+  const [rows] = await db.execute('SELECT id, username FROM `user` where type = "Jefe"');
+  return rows;
+};
+
+module.exports = { getPasswordByUsername, getAllUsers, getBoss};

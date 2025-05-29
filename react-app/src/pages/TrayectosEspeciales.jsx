@@ -16,6 +16,7 @@
     const [formNuevo, setFormNuevo] = useState({
       dateSolicitud: moment().format('YYYY-MM-DD'),
       id_user: '',
+      id_usu_boss: '',
       id_origin_place: '',
       id_arrival_place: '',
       date_service: moment().format('YYYY-MM-DD'),
@@ -39,6 +40,7 @@
     const [conductores, setConductores]   = useState([]);
     const [tiposVehiculo, setTiposVehiculo] = useState([]);
     const [placas, setPlacas]             = useState([]);
+    const [jefe, setBoss]                 = useState([]);
 
     // —————————————————————————
     // EFECTOS: CARGA INICIAL
@@ -63,13 +65,15 @@
     // 2) Traer usuarios y lugares para dropdowns
     const fetchUsuariosYLugares = async () => {
       try {
-        const [rUsers, rLugares] = await Promise.all([
+        const [rUsers, rBoses,rLugares] = await Promise.all([
           fetch('/users'),
+          fetch('/user_bosses'),
           fetch('/places'),
         ]);
-        if (!rUsers.ok || !rLugares.ok) throw new Error('Status en usuarios o lugares');
-        const [uJSON, lJSON] = await Promise.all([rUsers.json(), rLugares.json()]);
+        if (!rUsers.ok || !rBoses || !rLugares.ok) throw new Error('Status en usuarios o lugares');
+        const [uJSON, bJSON, lJSON] = await Promise.all([rUsers.json(), rBoses.json(),rLugares.json()]);
         setUsuarios(uJSON);
+        setBoss(bJSON);
         setLugares(lJSON);
       } catch (err) {
         console.error('⚠️ Error en fetchUsuariosYLugares:', err);
@@ -346,6 +350,24 @@
                   {usuarios.map((u) => (
                     <option key={u.id} value={u.id}>
                       {u.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block font-medium mb-1">Usuario Jefe:</label>
+                <select
+                  value={formNuevo.id_user}
+                  onChange={(e) =>
+                    setFormNuevo({ ...formNuevo, id_user: e.target.value })
+                  }
+                  className="border rounded px-3 py-2 w-full"
+                >
+                  <option value="">Seleccione usuario</option>
+                  {jefe.map((b) => (
+                    <option key={b.id} value={b.id}>
+                      {b.username}
                     </option>
                   ))}
                 </select>
